@@ -12,11 +12,11 @@ export const MAIN_ROUTES: Routes = [
                 loadChildren: () =>
                     import('../persons/persons.routes').then(m => m.PERSONS_ROUTES)
             },
-            // {
-            //     path: 'items',
-            //     loadChildren: () =>
-            //         import('../items/items.routes').then(m => m.ITEMS_ROUTES)
-            // },
+            {
+                path: 'items',
+                loadChildren: () =>
+                    import('../items/items.routes').then(m => m.ITEMS_ROUTES)
+            },
             // {
             //     path: 'orders',
             //     loadChildren: () =>

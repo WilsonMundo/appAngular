@@ -1,0 +1,36 @@
+<h2>Crear Item</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <div class="field">
+        <label>Nombre</label>
+        <input type="text" formControlName="name" />
+        <small *ngIf="form.controls['name'].touched && form.controls['name'].invalid">
+            Obligatorio (máx. 200).
+        </small>
+    </div>
+
+    <div class="field">
+        <label>Precio</label>
+        <input type="number" formControlName="price" step="0.01" />
+        <small *ngIf="form.controls['price'].touched && form.controls['price'].invalid">
+            Obligatorio y mayor o igual a 0.
+        </small>
+    </div>
+
+    <div class="field">
+        <label>Created By</label>
+        <input type="number" formControlName="createdBy" />
+        <small *ngIf="form.controls['createdBy'].touched && form.controls['createdBy'].invalid">
+            Obligatorio.
+        </small>
+    </div>
+
+    <div class="actions">
+        <button type="submit" [disabled]="loading || form.invalid">Guardar</button>
+        <a [routerLink]="['/main','items']">Cancelar</a>
+    </div>
+
+    <p *ngIf="loading">Guardando...</p>
+    <p class="success" *ngIf="successMsg">{{ successMsg }}</p>
+    <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+</form>
